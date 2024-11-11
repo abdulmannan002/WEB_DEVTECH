@@ -42,7 +42,7 @@ h2 {
 h3 {
     text-align:center;
     margin: 0 0 2px;
-    padding-right: 300px;
+    padding-right: 250px;
     padding-bottom: 10px;
 }
 
@@ -66,8 +66,8 @@ h3 {
     align-content: center;
     border: 1px solid #fcfffd00;
     border-radius: 5px ;
-    display: block;
-    width: 70%;
+    display:block;
+    width: 100%;
     padding: 10px;
     font-size: 14px;
     color: #0037ff;
@@ -82,21 +82,21 @@ h3 {
     color: rgb(216, 5, 181);
 }
 .form-control.success input {
-    border-color: var(--success--color);
+    border-color: var(--success-color);
 }
 .form-control.error input {
-    border-color: var(--error--color);
+    border-color: var(--error-color);
 }
 .form-control small {
-    color: var(--error--color);
+    color: var(--error-color);
     position:absolute;
     bottom: 1 ;
-    left: 180px;
+    left: 130px;
     visibility: hidden;    
 }
 
 .form-control.error small{
-    visibility:visible;
+    visibility: visible;
 }
 
 .form button {
@@ -104,7 +104,7 @@ h3 {
     background-color: navy;
     border: 2px solid navy;
     border-radius: 5px;
-    color: navy;
+    color: white;
     display: block;
     font-size: 16px;
     padding: 10px;
