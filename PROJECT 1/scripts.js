@@ -20,22 +20,13 @@ function showSuccess (input) {
     
 }
 
-function showPasswordMismatchError(input1, input2, message) {
-    const formControl1 = input1.parentElement;
-    const formControl2 = input2.parentElement;
-    formControl1.className = 'form-control error';
-    formControl2.className = 'form-control error';
-    const small1 = formControl1.querySelector('small');
-    const small2 = formControl2.querySelector('small');
-    small1.innerText = message;
-    small2.innerText = message;
-}
-
-
-
-function checkemail (email) {
+function checkemail (input) {
     const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    return re.test(String(email).toLowerCase());
+    if (re.test(input.value.trim())){
+        showSuccess(input);
+    }else {
+        showError(input, 'email is invalid')
+    }
 
 }
 function checkrequired (inputArray) {
@@ -45,19 +36,36 @@ function checkrequired (inputArray) {
             showError (input,`${getfeildid(input)} is required`);
         }else {
             showSuccess(input);
-        }
-        
+        }        
     });   
 }
+
 function getfeildid (input){
     return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
+
+function checklength(input,min,max){
+    if (input.value.length < min) {
+        showError(input,`${getfeildid(input)} must be ${min} character required`)
+    }else if (input.value.length > max) {
+        showError(input,`${getfeildid(input)} must be ${max} character required`)
+    }else {showSuccess(input);}
+}
+
+function checkpasswordmismatch(input1,input2) {
+    if (input1.value !== input2.value) {
+        showError(input2, "password don't match")
+    }
+}
+
 // create event listener
 form.addEventListener('submit',function(e) {
     e.preventDefault();
 
     checkrequired([username,email,password,password2]);
-
-
+    checklength(username,3,10);
+    checklength(password,6,30);
+    checkemail(email);
+    checkpasswordmismatch(password,password2);
 });
 

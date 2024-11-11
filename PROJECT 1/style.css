@@ -2,7 +2,7 @@
 
 :root {
     --success-color: green;
-    --error-color: red;
+    --error-color: #bbfd03e8;
 }
 
 * {
@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-    background-color: rgb(78, 106, 143);
+    background-color: rgb(118, 129, 145);
     border-radius: 5px;
     box-shadow: 0 2px 10px rgb(0, 0, 0, 0.5);
     width: 400px;
@@ -71,7 +71,7 @@ h3 {
     padding: 10px;
     font-size: 14px;
     color: #0037ff;
-    background-color: #e9e998;
+    background-color: #f0e3cc;
 }
 
 .form-control input:focus {
