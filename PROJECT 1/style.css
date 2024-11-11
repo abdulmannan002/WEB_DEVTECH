@@ -100,9 +100,9 @@ h3 {
 }
 
 .form button {
-    cursor: pointer;
+    cursor:pointer;
     background-color: navy;
-    border: 2px solid navy;
+    border: 4px solid navy;
     border-radius: 5px;
     color: white;
     display: block;

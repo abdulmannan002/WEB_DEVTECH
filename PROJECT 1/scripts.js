@@ -33,41 +33,31 @@ function showPasswordMismatchError(input1, input2, message) {
 
 
 
-
-function checkrequired (input,message) {
-    const formControl = input .parentElement;
+function checkemail (email) {
+    const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    return re.test(String(email).toLowerCase());
 
 }
-
+function checkrequired (inputArray) {
+    inputArray.forEach(function (input) {
+        if (input.value === '') {
+            console.log(input.id);
+            showError (input,`${getfeildid(input)} is required`);
+        }else {
+            showSuccess(input);
+        }
+        
+    });   
+}
+function getfeildid (input){
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
 // create event listener
 form.addEventListener('submit',function(e) {
     e.preventDefault();
 
-    console.log(username.value);
-    console.log(email.value);
-    console.log(password.value);
-    console.log(password2.value);
+    checkrequired([username,email,password,password2]);
 
-//check username input is empty or not
-    if(username.value == '') {
-        showError(username, 'username is required');
-    } else { showSuccess(username);}
-    if(email.value == '') {
-        showError(email, 'email is required');
-    }  else { showSuccess(email);}
-// Check if passwords match
-    if (password.value !== password2.value) {
-        showPasswordMismatchError(password, password2, 'Passwords do not match');
-    } else {
-        showSuccess(password);
-        showSuccess(password2);
-    }
 
-    // Check password format
-    if (!passwordPattern.test(password.value)) {
-        showError(password, 'must 8 character and 1 = @#');
-    } else {
-        showSuccess(password);
-    }
 });
 
