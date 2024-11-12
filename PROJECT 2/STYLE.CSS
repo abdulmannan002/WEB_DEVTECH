@@ -1,2 +1,114 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    color: blanchedalmond;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'lato',sans-serif;
+    margin: 0%;
+}
+
+.movie-container {
+    margin: 20px 0;
+}
+
+.movie-container select {
+    background-color:bisque;
+    border: 0;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 5px 15px 5x 15px;
+    
+}
+
+.seat {
+    background-color: crimson;
+    height: 12px;
+    width: 15px;
+    margin: 3px;
+    border-top-left-radius : 15px;
+    border-top-right-radius: 15px;
+}
+
+.seat.selected {
+    background-color: darkturquoise;
+}
+.seat.occuipied {
+    background-color:honeydew;
+}
+
+.seat:nth-of-type(2) {
+    margin-right: 20px;
+}
+
+.seat:nth-last-of-type(2) {
+    margin-left: 20px;
+}
+
+.seat:not(.occuipied):hover {
+    cursor: pointer;
+    transform: scale(1,2);
+}
+
+.legend {
+    background-color:goldenrod;
+    margin-left: 10px;
+    border-radius: 5px;
+    color: black;
+    list-style-type: none;
+    display:flex;
+    justify-content: space-between;
+    
+}
+.legend li {
+    display: flex;
+    align-items:flex-end;
+    margin-left: 0.5px ;
+    justify-content:left
+}
+.legend li small{
+    margin-right: 9px;
+    margin-left: 8px;
+
+}
+.legend .seat:not(.occuipied):hover{
+    cursor: default;
+    transform: scale(1);
+}
+
+.container{
+    perspective: 700px;
+    margin-bottom: 30px;
+}
+
+.row {
+    display:flex;
+}
+
+.screen{
+    background-color: rgb(245, 245, 247);
+    height: 100px;
+    width: 100%;
+    margin: 15px 0;
+    transform: rotateX(-45deg);
+    box-shadow: 0 3px 10px whitesmoke;
+}
+
+p.text{
+    margin: 5px 0;
+    color:rgb(238, 237, 234);
+}
+
+p.text span {
+    color:aqua;
+}
