@@ -46,6 +46,30 @@ h1{
     cursor: pointer;
 }
 
+.volume {
+    width: 100px;             /* Adjust width as needed */
+    cursor: pointer;
+    margin-left: 8px;          /* Space between the icon and slider */
+    appearance: none;          /* Remove default styling for custom look */
+    background-color: #ccc;    /* Base color of the slider */
+    height: 4px;
+    border-radius: 5px;
+}
+
+
+#volume-icon {
+    cursor: pointer;
+    color: blue;               /* Color of the icon */
+    margin-right: 5px;         /* Space between icon and slider */
+    font-size: 1.2em;          /* Adjust icon size */
+    transition: color 0.3s ease;
+}
+
+#volume-icon:hover {
+    color: darkblue;           /* Icon color on hover */
+}
+
+
 @media (max-width:800px) {
     .screen,.controls{
         width: 90%;
