@@ -26,9 +26,9 @@ function updateselectedcount(){
 function populateUI (){
     const selectedseats = JSON.parse(localStorage.getItem('selectedseats'));
     if (selectedseats !== null && selectedseats.length > 0 ) {
-        seats.forEach((sea,index)=> {
+        seats.forEach((seat,index)=> {
             if (selectedseats.indexOf(index) > -1) {
-                sea.classList.add('selected');
+                seat.classList.add('selected');
             }
         })
     }
@@ -43,7 +43,6 @@ function populateUI (){
 container.addEventListener('click',(e)=>{
     if (e.target.classList.contains('seat') && 
     !e.target.classList.contains('occuipied')){
-    }{
         e.target.classList.toggle('selected');
         updateselectedcount();
     }
