@@ -44,7 +44,7 @@ h1{
     border: 0;
     background:transparent;
     cursor: pointer;
-
+}
 
 @media (max-width:800px) {
     .screen,.controls{
