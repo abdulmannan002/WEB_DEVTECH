@@ -11,7 +11,7 @@
     <p>Please select the input amount and currency as well as the output currency and amount </p>
     <div class="container">
         <div class="currency">
-            <select id="currency-one">
+            <select class = "one" id="currency-one">
                 <option value='AED'>Albania</option>
                 <option value='AFN'>Algeria</option>
                 <option value='ALL'>Angola</option>
@@ -176,8 +176,16 @@
             </select>
             <input type="number" id="input-one" placeholder="1">
         </div>
+        <div class="sawp-rates-container">
+            <button class="btn" id="swap">
+                SWAP
+            </button>
+            <div class="rate" id="rate">
+
+            </div>
+        </div>
         <div class="currency">
-            <select id="currency-two">
+            <select class = "one" id="currency-two">
                 <option value='AED'>Albania</option>
                 <option value='AFN'>Algeria</option>
                 <option value='ALL'>Angola</option>
@@ -341,14 +349,6 @@
                 <option value='ZWL'>Zimbabwe</option>
             </select>
             <input type="number" id="input-tw0" placeholder="0">
-        </div>
-        <div class="sawp-rates-container">
-            <button class="btn" id="swap">
-                SWAP
-            </button>
-            <div class="rate" id="rate">
-
-            </div>
         </div>
     </div>
     <script src="script.js"></scriptsrc>
