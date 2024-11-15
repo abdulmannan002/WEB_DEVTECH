@@ -1,27 +1,53 @@
-const currencyone = document.getElementById('currency-one');
-const currencytwo = document.getElementById('currency-two');
-const currencyamount = document.getElementById('amount-one');
-const currencyamount2 = document.getElementById('amount-two');
+// Get DOM Elements
+const currencyOne = document.getElementById('currency-one');
+const amountCurrencyOne = document.getElementById('amount-one');
+const currencyTwo = document.getElementById('currency-two');
+const amountCurrencyTwo = document.getElementById('amount-two');
 const rate = document.getElementById('rate');
 const swap = document.getElementById('swap');
 
-function calculation(){
-    const currencyonecode = currencyone.value;
-    const currencytwoode = currencytwo.value;
+// Fetch Exchange Rates & Update the DOM
+function calculate() {
+    // Get the Currency Code for currency 1 and 2
+    const currencyOneCode = currencyOne.value;
+    const currencyTwoCode = currencyTwo.value;
 
-    fetch(`https://v6.exchangerate-api.com/v6/8bfcd7e73084040dc027c68c/pair/${currencyonecode}/${currencytwoode}`)
-    .then(res=> res.json())
-    .then(data => {
-        const conversion = data.conversion_rate;
-        rate.innerText = `1 ${currencyonecode} = ${currencytwoode} ${conversion}`;
-        currencyamount2 = new Intl.NumberFormat('en-US',{style: 'currency', currency:currencytwoode }).format((currencyamount));
-        currencyamount2.value = amount2;
-    });
-}
+    // Send Request to ExchangeRate-API for conversion rates for currency one
+    fetch(`https://v6.exchangerate-api.com/v6/a43d02c063c1303f1c06c071/pair/${currencyOneCode}/${currencyTwoCode}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data.conversion_rate);
+            // Get the Conversion Rate from Currency One to Currency Two
+            const conversionRate = data.conversion_rate;
+            // Update the DOM to display the conversion rate
+            rate.innerText = `1 ${currencyOneCode} = ${conversionRate} ${currencyTwoCode}`;
+            // Formatting Currency Two Amount
+            const amount2 = new Intl.NumberFormat('en-US', { style: 'currency', currency: currencyTwoCode }).format((amountCurrencyOne.value * conversionRate).toFixed(2));
+            // Updating DOM
+            amountCurrencyTwo.value = amount2;
+        });
+};
 
-currencyone.addEventListener('change',calculation);
-currencyamount2.addEventListener('input',calculation);
-currencytwo.addEventListener('change',calculation);
-currencyamount2.addEventListener('input',calculation);
+// Event Listeners
+// Recalculate exchange rate when currency 1 changes
+currencyOne.addEventListener('change', calculate);
+// Recalculate exchange amount when currency 1 amount changes
+amountCurrencyOne.addEventListener('input', calculate);
+// Recalculate exchange rate when currency 2 changes
+currencyTwo.addEventListener('change', calculate);
+// Recalculate exchange amount when currency 2 amount changes
+amountCurrencyTwo.addEventListener('input', calculate);
 
-calculation();
+swap.addEventListener('click', () => {
+    // Save Value of Currency One Code to temp variable
+    const temp = currencyOne.value;
+    // Copy Currency Two Code to Currency One
+    currencyOne.value = currencyTwo.value;
+    // Copy Currency One Code from temp variable to Currency Two
+    currencyTwo.value = temp;
+    // Recalculate exchange rate after swap
+    calculate();
+})
+
+// Execute calculate function on page load
+calculate();
